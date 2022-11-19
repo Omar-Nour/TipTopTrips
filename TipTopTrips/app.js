@@ -15,4 +15,8 @@ app.get('/', function(req, res) {
   res.render('login', {title: "TipTopTrips"})
 });
 
+app.get('/registration', function(req, res) {
+  res.render('registration')
+});
+
 app.listen(3000);
