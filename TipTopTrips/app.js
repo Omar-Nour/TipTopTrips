@@ -26,12 +26,6 @@ app.get('/home', function(req, res) {
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://networks:hackstack@netwroksdb.oeyeef4.mongodb.net/test";
 
-MongoClient.connect(url, function(err, client) {
-  if (err) throw err;
-  var dbo = client.db("UserLogins");
-  //dbo.collection("LoginCollection").insertOne({id: 1, username: "admin", password: "admin"});
-});
-
 app.post('/', function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
