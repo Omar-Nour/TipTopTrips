@@ -58,4 +58,5 @@ app.post('/', function(req, res) {
   
 })});
 
+app.timeout = 60000;
 app.listen(3000);
