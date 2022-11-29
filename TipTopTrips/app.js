@@ -26,11 +26,11 @@ app.get('/home', function(req, res) {
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-// MongoClient.connect(url, function(err, client) {
-//   if (err) throw err;
-//   var dbo = client.db("UserLogins");
-//   //dbo.collection("LoginCollection").insertOne({id: 1, username: "admin", password: "admin"});
-// });
+MongoClient.connect(url, function(err, client) {
+  if (err) throw err;
+  var dbo = client.db("UserLogins");
+  //dbo.collection("LoginCollection").insertOne({id: 1, username: "admin", password: "admin"});
+});
 
 app.post('/', function(req, res) {
   let username = req.body.username;
@@ -38,6 +38,7 @@ app.post('/', function(req, res) {
   MongoClient.connect(url, function(err, client) {
     if (err) throw err;
     var dbo = client.db("UserLogins");
+    dbo.collection("LoginCollection").insertOne( {id:1, name: 'awer'});
     dbo.collection("LoginCollection").find({username: username, password: password}).toArray(function(err, result) {
       if (err) throw err;
       if (result.length > 0) {
