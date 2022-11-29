@@ -24,7 +24,7 @@ app.get('/home', function(req, res) {
 });
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb+srv://networks:hackstack@netwroksdb.oeyeef4.mongodb.net/test";
 
 // MongoClient.connect(url, function(err, client) {
 //   if (err) throw err;
@@ -37,8 +37,8 @@ app.post('/', function(req, res) {
   let password = req.body.password;
   MongoClient.connect(url, function(err, client) {
     if (err) throw err;
-    var dbo = client.db("UserLogins");
-    dbo.collection("LoginCollection").find({username: username, password: password}).toArray(function(err, result) {
+    var dbo = client.db("TipTopTrips");
+    dbo.collection("Accounts").find({username: username, password: password}).toArray(function(err, result) {
       if (err) throw err;
       if (result.length > 0) {
         res.redirect('/home');
