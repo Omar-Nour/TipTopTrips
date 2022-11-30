@@ -84,6 +84,11 @@ app.get('/rome',function(req,res){
   res.render('rome');
 });
 
+//ability to navigate to the Hiking page
+app.get('/hiking', function(req, res) {
+  res.render('hiking');
+});
+
 //End of Shamekh's code
 
 app.timeout = 60000;
