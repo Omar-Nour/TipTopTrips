@@ -49,6 +49,8 @@ app.post('/', function(req, res) {
 
 //Shamekh's code (seperating my code using comments to alleviate pull request merging shenanigans)
 
+//Pages Routes
+
 //ability to navigate to the Want-To-Go-List page
 app.get('/wanttogo', function(req, res) { 
   res.render('wanttogo');
