@@ -11,6 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
 app.get('/', function(req, res) {
   res.render('login', {invalidloginerror: ""});
 });
@@ -43,6 +46,22 @@ app.post('/', function(req, res) {
       }
   });
 })});
+
+//Shamekh's code (seperating my code using comments to alleviate pull request merging shenanigans)
+
+//ability to navigate to the Want-To-Go-List page
+app.get('/wanttogo', function(req, res) {
+  res.render('wanttogo');
+});
+
+//ability to navigate to the Islands page
+app.get('/islands', function(req, res) {
+  res.render('islands');
+});
+
+
+
+//End of Shamekh's code
 
 app.timeout = 60000;
 app.listen(3000);
