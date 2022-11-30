@@ -38,7 +38,7 @@ app.post('/', function(req, res) {
     dbo.collection("Accounts").find({username: username, password: password}).toArray(function(err, result) {
       if (err) throw err;
       if (result.length > 0) {
-        res.redirect('/home');
+        res.redirect('home');
         console.log("Valid login");
       } else {
         res.render('login', {invalidloginerror: "Invalid username or password"});
@@ -50,15 +50,24 @@ app.post('/', function(req, res) {
 //Shamekh's code (seperating my code using comments to alleviate pull request merging shenanigans)
 
 //ability to navigate to the Want-To-Go-List page
-app.get('/wanttogo', function(req, res) {
+app.get('/wanttogo', function(req, res) { 
   res.render('wanttogo');
 });
 
 //ability to navigate to the Islands page
-app.get('/islands', function(req, res) {
+app.get('/islands', function(req, res) { 
   res.render('islands');
 });
 
+//ability to navigate to the Bali page
+app.get('/bali',function(req,res){
+  res.render('bali');
+});
+
+//ability to navigate to the Santorini page
+app.get('/santorini',function(req,res){
+  res.render('santorini');
+});
 
 
 //End of Shamekh's code
