@@ -47,8 +47,6 @@ app.post('/', function(req, res) {
   });
 })});
 
-//Shamekh's code (seperating my code using comments to alleviate pull request merging shenanigans)
-
 //Pages Routes
 
 //ability to navigate to the Want-To-Go-List page
@@ -101,7 +99,7 @@ app.get('/annapurna',function(req,res){
   res.render('annapurna');
 });
 
-//End of Shamekh's code
+//End of Pages Routes
 
 app.timeout = 60000;
 app.listen(3000);
