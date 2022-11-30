@@ -69,6 +69,11 @@ app.get('/santorini',function(req,res){
   res.render('santorini');
 });
 
+//ability to navigate to the Cities page
+app.get('/cities', function(req, res) {
+  res.render('cities');
+});
+
 
 //End of Shamekh's code
 
