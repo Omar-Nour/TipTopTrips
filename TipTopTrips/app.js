@@ -74,6 +74,15 @@ app.get('/cities', function(req, res) {
   res.render('cities');
 });
 
+//ability to navigate to the Paris page
+app.get('/paris',function(req,res){
+  res.render('paris');
+});
+
+//ability to navigate to the Rome page
+app.get('/rome',function(req,res){
+  res.render('rome');
+});
 
 //End of Shamekh's code
 
