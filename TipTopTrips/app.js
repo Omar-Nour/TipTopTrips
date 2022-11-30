@@ -89,6 +89,16 @@ app.get('/hiking', function(req, res) {
   res.render('hiking');
 });
 
+//ability to navigate to the Inca page
+app.get('/inca',function(req,res){
+  res.render('inca');
+});
+
+//ability to navigate to the Annapurna page
+app.get('/annapurna',function(req,res){
+  res.render('annapurna');
+});
+
 //End of Shamekh's code
 
 app.timeout = 60000;
