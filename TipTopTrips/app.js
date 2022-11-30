@@ -50,7 +50,7 @@ app.post('/', function(req, res) {
 //Pages Routes
 
 //ability to navigate to the Want-To-Go-List page
-app.get('/wanttogo', function(req, res) { 
+app.get('/want-to-go', function(req, res) { 
   res.render('wanttogo');
 });
 
