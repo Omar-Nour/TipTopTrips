@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
 app.get('/', function(req, res) {
   res.render('login', {invalidloginerror: ""});
 });
@@ -79,6 +82,60 @@ app.post('/', function(req, res) {
     });
   });
 }});
+
+//Pages Routes
+
+//ability to navigate to the Want-To-Go-List page
+app.get('/want-to-go', function(req, res) { 
+  res.render('wanttogo');
+});
+
+//ability to navigate to the Islands page
+app.get('/islands', function(req, res) { 
+  res.render('islands');
+});
+
+//ability to navigate to the Bali page
+app.get('/bali',function(req,res){
+  res.render('bali');
+});
+
+//ability to navigate to the Santorini page
+app.get('/santorini',function(req,res){
+  res.render('santorini');
+});
+
+//ability to navigate to the Cities page
+app.get('/cities', function(req, res) {
+  res.render('cities');
+});
+
+//ability to navigate to the Paris page
+app.get('/paris',function(req,res){
+  res.render('paris');
+});
+
+//ability to navigate to the Rome page
+app.get('/rome',function(req,res){
+  res.render('rome');
+});
+
+//ability to navigate to the Hiking page
+app.get('/hiking', function(req, res) {
+  res.render('hiking');
+});
+
+//ability to navigate to the Inca page
+app.get('/inca',function(req,res){
+  res.render('inca');
+});
+
+//ability to navigate to the Annapurna page
+app.get('/annapurna',function(req,res){
+  res.render('annapurna');
+});
+
+//End of Pages Routes
 
 app.timeout = 60000;
 app.listen(3000);
