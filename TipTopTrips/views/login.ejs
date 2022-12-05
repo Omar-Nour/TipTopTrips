@@ -44,7 +44,7 @@
         <br>
         <div>
             <%if (invalidloginerror.length != 0) { %>
-                <div id='status' style="color: darkred;">Invalid username or password</div>
+                <div id='status' style="color: darkred;"><%= invalidloginerror %></div>
             <% } %>
             <a href="registration">I dont have an account</a>
         </div>
