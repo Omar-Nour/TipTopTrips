@@ -77,7 +77,16 @@
         With its stunning turquoise waters and picturesque villages, great activities including wine-tasting, authentic Greek cuisine, regular boat excursions due to its ideal location for island hopping, small Greek island of Santorini became so popular as a holiday destination.
     </div>
     <div class="wanttogo">
-        <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        <form action="" method="post">
+            <button  id="wanttogo"  class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        </form>
+        <br>
+            <div>
+                <% if(locals.err_msg) { %>
+                    <div class="alert alert-danger" role="alert"><%= err_msg %></div>
+                    <% } %>
+                
+            </div>
     </div>
     <div class="video">
         <!-- The iframe HTML tag is what will allow us to embed the link of a video in the page so that 
