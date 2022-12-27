@@ -238,6 +238,7 @@ app.post('/paris', (req, res) => {
   //check if paris is already in wanttogo list
   if (req.session.user.wanttogo.includes("paris")) {
 	err_msg = "Paris is already in your want to go list";
+	console.log("Paris is already in "+req.session.user.username+"'s wanttogo list");
 	res.render('paris', {err_msg: err_msg});
   } else {
 	//connect to database and add destination to wanntogo
@@ -262,6 +263,7 @@ app.post('/bali', (req, res) => {
 	//check if bali is already in wanttogo list
 	if (req.session.user.wanttogo.includes("bali")) {
 		err_msg = "Bali is already in your want to go list";
+		console.log("Bali is already in "+req.session.user.username+"'s wanttogo list");
 		res.render('bali', {err_msg: err_msg});
 	} else {
 		//connect to database and add destination to wanntogo
@@ -285,6 +287,7 @@ app.post('/inca', (req, res) => {
 	//check if inca is already in wanttogo list
 	if (req.session.user.wanttogo.includes("inca")) {
 		err_msg = "Inca is already in your want to go list";
+		console.log("Inca is already in "+req.session.user.username+"'s wanttogo list");
 		res.render('inca', {err_msg: err_msg});
 	} else {
 		//connect to database and add destination to wanntogo
@@ -308,6 +311,7 @@ app.post('/annapurna', (req, res) => {
 	//check if annapurna is already in wanttogo list
 	if (req.session.user.wanttogo.includes("annapurna")) {
 		err_msg = "Annapurna is already in your want to go list";
+		console.log("Annapurna is already in "+req.session.user.username+"'s wanttogo list");
 		res.render('annapurna', {err_msg: err_msg});
 	} else {
 		//connect to database and add destination to wanntogo
@@ -331,6 +335,7 @@ app.post('/rome', (req, res) => {
 	//check if rome is already in wanttogo list
 	if (req.session.user.wanttogo.includes("rome")) {
 		err_msg = "Rome is already in your want to go list";
+		console.log("Rome is already in "+req.session.user.username+"'s wanttogo list");
 		res.render('rome', {err_msg: err_msg});
 	} else {
 		//connect to database and add destination to wanntogo
@@ -354,6 +359,7 @@ app.post('/santorini', (req, res) => {
 	//check if santorini is already in wanttogo list
 	if (req.session.user.wanttogo.includes("santorini")) {
 		err_msg = "Santorini is already in your want to go list";
+		console.log("Santorini is already in "+req.session.user.username+"'s wanttogo list");
 		res.render('santorini', {err_msg: err_msg});
 	} else {
 		//connect to database and add destination to wanntogo
