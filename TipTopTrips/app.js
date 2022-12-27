@@ -223,49 +223,46 @@ app.get('/annapurna',function(req,res){
 //adding to wanttogo list
 app.post('/paris', (req, res) => {
   let err_msg = '';
-          err_msg = "Paris is added to yout want-to-go list";
-          return res.render('paris', { err_msg: err_msg } );
+  err_msg = "Paris is added to yout want-to-go list";
+  res.render('paris', { err_msg: err_msg } );
   
-  });
+});
 
 
- app.post('/bali', (req, res) => {
+app.post('/bali', (req, res) => {
     let err_msg = '';
-
-            err_msg = "Bali is added to yout want-to-go list";
-            return res.render( 'bali',{ err_msg: err_msg } );
+	err_msg = "Bali is added to yout want-to-go list";
+    res.render( 'bali',{ err_msg: err_msg } );
   
-    });
+});
 
-  app.post('/inca', (req, res) => {
-      let err_msg = '';
-  
-              err_msg = "Inca is added to yout want-to-go list";
-              return res.render( 'inca',{ err_msg: err_msg } );
-    
-      });
- app.post('/annapurna', (req, res) => {
+app.post('/inca', (req, res) => {
     let err_msg = '';
+	err_msg = "Inca is added to yout want-to-go list";
+    res.render( 'inca',{ err_msg: err_msg } );
     
-         err_msg = "Annapurna is added to yout want-to-go list";
-          return res.render( 'annapurna',{ err_msg: err_msg } );
+});
+
+app.post('/annapurna', (req, res) => {
+    let err_msg = '';
+	err_msg = "Annapurna is added to yout want-to-go list";
+	res.render( 'annapurna',{ err_msg: err_msg } );
       
-        });
+});
  
 app.post('/rome', (req, res) => {
     let err_msg = '';
-          
-    err_msg = "Rome is added to yout want-to-go list";
-    return res.render( 'rome',{ err_msg: err_msg } );
+	err_msg = "Rome is added to yout want-to-go list";
+    res.render( 'rome',{ err_msg: err_msg } );
             
-              });
+});
+
 app.post('/santorini', (req, res) => {
     let err_msg = '';
-                
-    err_msg = "Santorini is added to yout want-to-go list";
-    return res.render( 'santorini',{ err_msg: err_msg } );
+	err_msg = "Santorini is added to yout want-to-go list";
+	res.render( 'santorini',{ err_msg: err_msg } );
                   
-                    }); 
+}); 
 
 app.timeout = 60000;
 app.listen(3000);
