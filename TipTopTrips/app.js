@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const session = require('express-session');
 var path = require('path');
 const { request } = require('http');
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+let alert = require('alert'); 
 
 
 var app = express();
@@ -53,7 +55,11 @@ app.post('/registration', function(req, res) {
 				dbo.collection("Accounts").insertOne({username: usern, password: hash, wanttogo: []})
 			});
 			//res.redirect(201, '/');
-			res.redirect('/');
+			//res.render('registration',{invalidloginerror: "", success:"user created"});
+			alert("user created");
+			sleep(2000).then(() => {
+				res.redirect('/');
+			});
 		}});
 	})
 }});
