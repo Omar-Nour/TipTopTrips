@@ -20,6 +20,9 @@ app.use(session({
 	saveUninitialized: false
 }))
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://networks:hackstack@netwroksdb.oeyeef4.mongodb.net/test";
+
 
 app.get('/', function(req, res) {
   	res.render('login', {invalidloginerror: ""});
@@ -29,6 +32,7 @@ app.get('/registration', function(req, res) {
   	res.render('registration',{invalidloginerror: ""});
 });
 
+//registration 
 app.post('/registration', function(req, res) {
 	let usern = req.body.username;
 	let passw = req.body.password;
@@ -36,7 +40,7 @@ app.post('/registration', function(req, res) {
 		res.render('registration', {invalidloginerror: "please input a username and a password"});
 		console.log("Invalid regsitration");
 	} else {
-		MongoClient.connect(url, function(err, client) {
+		MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
 		if (err) throw err;
 		var dbo = client.db("TipTopTrips");
 		dbo.collection("Accounts").find({username: usern}).toArray(function(err, result) {
@@ -61,9 +65,7 @@ app.get('/home', function(req, res) {
 	}
 });
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://networks:hackstack@netwroksdb.oeyeef4.mongodb.net/test";
-
+//login logic
 app.post('/', function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
@@ -71,7 +73,7 @@ app.post('/', function(req, res) {
 		res.render('login', {invalidloginerror: "Please input a username and a password"});
 		console.log("Invalid login");
 	} else {
-		MongoClient.connect(url, function(err, client) {
+		MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true},function(err, client) {
 		if (err) throw err;
 		var dbo = client.db("TipTopTrips");
 		dbo.collection("Accounts").findOne({username: username}, function(err, result) {
