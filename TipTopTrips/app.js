@@ -52,7 +52,8 @@ app.post('/registration', function(req, res) {
 			bcrypt.hash(passw, 10, function(err, hash) { // hash password
 				dbo.collection("Accounts").insertOne({username: usern, password: hash})
 			});
-			res.redirect(201, '/');
+			//res.redirect(201, '/');
+			res.redirect('/');
 		}});
 	})
 }});
@@ -87,6 +88,11 @@ app.post('/', function(req, res) {
 				res.render('login', {invalidloginerror: "Invalid username or password"});
 				console.log("Invalid login");
 			} else {
+				//add wanttogo param to all entries in db
+				//dbo.collection("Accounts").updateMany({}, {$set:{"wanttogo": []}});
+
+				//remove param from all entries in db
+				//dbo.collection("Accounts").updateMany({}, {$unset:{"wanttogo": {}}});
 				req.session.authenticated = true;
 				req.session.user = userObject;
 				res.redirect('/home');
@@ -225,9 +231,29 @@ app.get('/annapurna',function(req,res){
 //adding to wanttogo list
 app.post('/paris', (req, res) => {
   let err_msg = '';
-  err_msg = "Paris is added to yout want-to-go list";
-  res.render('paris', { err_msg: err_msg } );
-  
+
+  //connect to database to perform checks or add new destination to wanttogo list
+  MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
+	if (err) throw err;
+	var dbo = client.db("TipTopTrips");
+	dbo.collection("Accounts").findOne({username: req.session.user.username}, function(err, result) {
+		if (err) throw err;
+		if (result.wanttogo.includes('paris')) { //check if user already added destination to wanttogo list
+			//re-render the page with an appropriate warning if yes
+			console.log("Paris is already in wanttogo list of "+req.session.user.username);
+			err_msg = "Paris is already in your want-to-go list";
+			res.render('paris', { err_msg: err_msg } );
+		} else {
+			//add paris to wanttogo if this is not the case
+			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "paris"}}, function(err, result) {
+				if (err) throw err;
+				console.log("Added paris to wanttogo list of "+req.session.user.username);
+				err_msg = "Paris is added to yout want-to-go list";
+  				res.render('paris', { err_msg: err_msg } );
+			});
+		}
+	});
+  });
 });
 
 
