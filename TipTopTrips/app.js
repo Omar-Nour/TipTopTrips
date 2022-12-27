@@ -50,7 +50,7 @@ app.post('/registration', function(req, res) {
 			console.log("Invalid regsitration");
 			} else { // new username; proceed to register
 			bcrypt.hash(passw, 10, function(err, hash) { // hash password
-				dbo.collection("Accounts").insertOne({username: usern, password: hash})
+				dbo.collection("Accounts").insertOne({username: usern, password: hash, wanttogo: []})
 			});
 			//res.redirect(201, '/');
 			res.redirect('/');
