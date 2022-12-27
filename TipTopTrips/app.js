@@ -340,9 +340,29 @@ app.post('/annapurna', (req, res) => {
  
 app.post('/rome', (req, res) => {
     let err_msg = '';
-	err_msg = "Rome is added to yout want-to-go list";
-    res.render( 'rome',{ err_msg: err_msg } );
-            
+
+	//connect to database to perform checks or add new destination to wanttogo list
+	MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("TipTopTrips");
+		dbo.collection("Accounts").findOne({username: req.session.user.username}, function(err, result) {
+			if (err) throw err;
+			if (result.wanttogo.includes('rome')) { //check if user already added destination to wanttogo list
+				//re-render the page with an appropriate warning if yes
+				console.log("Rome is already in wanttogo list of "+req.session.user.username);
+				err_msg = "Rome is already in your want-to-go list";
+				res.render('rome', { err_msg: err_msg } );
+			} else {
+				//add rome to wanttogo if this is not the case
+				dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "rome"}}, function(err, result) {
+					if (err) throw err;
+					console.log("Added rome to wanttogo list of "+req.session.user.username);
+					err_msg = "Rome is added to yout want-to-go list";
+					res.render('rome', { err_msg: err_msg } );
+				});
+			}
+		});
+	});         
 });
 
 app.post('/santorini', (req, res) => {
