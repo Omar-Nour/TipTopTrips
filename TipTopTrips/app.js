@@ -215,10 +215,12 @@ app.get('/annapurna',function(req,res){
 	}
   	
 });
+
+//End of Pages Routes
  
 
 
-
+//adding to wanttogo list
 app.post('/paris', (req, res) => {
   let err_msg = '';
           err_msg = "Paris is added to yout want-to-go list";
@@ -264,8 +266,6 @@ app.post('/santorini', (req, res) => {
     return res.render( 'santorini',{ err_msg: err_msg } );
                   
                     }); 
-
-//End of Pages Routes
 
 app.timeout = 60000;
 app.listen(3000);
