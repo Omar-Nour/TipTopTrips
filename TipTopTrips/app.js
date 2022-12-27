@@ -57,9 +57,7 @@ app.post('/registration', function(req, res) {
 			//res.redirect(201, '/');
 			//res.render('registration',{invalidloginerror: "", success:"user created"});
 			alert("user created");
-			sleep(2000).then(() => {
-				res.redirect('/');
-			});
+			res.redirect('/');
 		}});
 	})
 }});
