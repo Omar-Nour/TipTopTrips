@@ -286,9 +286,29 @@ app.post('/bali', (req, res) => {
 
 app.post('/inca', (req, res) => {
     let err_msg = '';
-	err_msg = "Inca is added to yout want-to-go list";
-    res.render( 'inca',{ err_msg: err_msg } );
-    
+
+	//connect to database to perform checks or add new destination to wanttogo list
+	MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
+		if (err) throw err;
+		var dbo = client.db("TipTopTrips");
+		dbo.collection("Accounts").findOne({username: req.session.user.username}, function(err, result) {
+			if (err) throw err;
+			if (result.wanttogo.includes('inca')) { //check if user already added destination to wanttogo list
+				//re-render the page with an appropriate warning if yes
+				console.log("Inca is already in wanttogo list of "+req.session.user.username);
+				err_msg = "Inca is already in your want-to-go list";
+				res.render('inca', { err_msg: err_msg } );
+			} else {
+				//add inca to wanttogo if this is not the case
+				dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "inca"}}, function(err, result) {
+					if (err) throw err;
+					console.log("Added inca to wanttogo list of "+req.session.user.username);
+					err_msg = "Inca is added to yout want-to-go list";
+					res.render('inca', { err_msg: err_msg } );
+				});
+			}
+		});
+	});
 });
 
 app.post('/annapurna', (req, res) => {
