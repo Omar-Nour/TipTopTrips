@@ -77,7 +77,16 @@
         Rome today is one of the most important tourist destinations of the world, due to the incalculable immensity of its archaeological and art treasures, as well as for the charm of its unique traditions, the beauty of its panoramic views, and the majesty of its magnificent villas.
     </div>
     <div class="wanttogo">
-        <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        <form action="" method="post">
+            <button  id="wanttogo"  class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        </form>
+        <br>
+            <div>
+                <% if(locals.err_msg) { %>
+                    <div class="alert alert-danger" role="alert"><%= err_msg %></div>
+                    <% } %>
+                
+            </div>
     </div>
     <div class="video">
         <!-- The iframe HTML tag is what will allow us to embed the link of a video in the page so that 
