@@ -238,28 +238,23 @@ app.get('/annapurna',function(req,res){
 app.post('/paris', (req, res) => {
   let err_msg = '';
 
-  //connect to database to perform checks or add new destination to wanttogo list
-  MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
-	if (err) throw err;
-	var dbo = client.db("TipTopTrips");
-	dbo.collection("Accounts").findOne({username: req.session.user.username}, function(err, result) {
+  if (req.session.user.wanttogo.includes("paris")) {
+	err_msg = "Paris is already in your want to go list";
+	res.render('paris', {err_msg: err_msg});
+  } else {
+	//connect to database and add destination to wanntogo
+	MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, function(err, client) {
 		if (err) throw err;
-		if (result.wanttogo.includes('paris')) { //check if user already added destination to wanttogo list
-			//re-render the page with an appropriate warning if yes
-			console.log("Paris is already in wanttogo list of "+req.session.user.username);
-			err_msg = "Paris is already in your want-to-go list";
+		var dbo = client.db("TipTopTrips");
+		//add paris to wanttogo
+		dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "paris"}}, function(err, result) {
+			if (err) throw err;
+			console.log("Added paris to wanttogo list of "+req.session.user.username);
+			err_msg = "Paris is added to yout want-to-go list";
 			res.render('paris', { err_msg: err_msg } );
-		} else {
-			//add paris to wanttogo if this is not the case
-			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "paris"}}, function(err, result) {
-				if (err) throw err;
-				console.log("Added paris to wanttogo list of "+req.session.user.username);
-				err_msg = "Paris is added to yout want-to-go list";
-  				res.render('paris', { err_msg: err_msg } );
-			});
-		}
+		});
 	});
-  });
+  }
 });
 
 
