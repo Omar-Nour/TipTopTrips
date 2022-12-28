@@ -120,6 +120,8 @@ app.post('/', function(req, res) {
 //	}
 //});
 
+
+
 //ability to navigate to the Islands page
 app.get('/islands', function(req, res) {
 	if (req.session.authenticated) {
