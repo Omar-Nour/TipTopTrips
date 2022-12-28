@@ -379,11 +379,13 @@ app.post('/santorini', (req, res) => {
 app.get('/want-to-go', function(req, res) { 
 	if (req.session.authenticated) {
 		
-		res.render('wanttogo',{title:req.session.user.wanttogo});
+		res.render('wanttogo',{reports:req.session.user.wanttogo});
 	} else {
 		res.redirect('/');
 	}
+
 });
+
 
 app.timeout = 60000;
 app.listen(3000);
