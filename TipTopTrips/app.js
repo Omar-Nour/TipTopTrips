@@ -110,15 +110,15 @@ app.post('/', function(req, res) {
 //Pages Routes
 
 //ability to navigate to the Want-To-Go-List page
-app.get('/want-to-go', function(req, res) { 
-	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
-		res.render('wanttogo');
-	} else {
-		res.redirect('/');
-	}
-});
+//app.get('/want-to-go', function(req, res) { 
+//	if (req.session.authenticated) {
+//		// USE req.session.user FOR USER DATA
+//		// INSERT YOUR CODE HERE
+//		res.render('wanttogo');
+//	} else {
+//		res.redirect('/');
+//	}
+//});
 
 //ability to navigate to the Islands page
 app.get('/islands', function(req, res) {
@@ -376,6 +376,14 @@ app.post('/santorini', (req, res) => {
 		});
 	}
 }); 
+app.get('/want-to-go', function(req, res) { 
+	if (req.session.authenticated) {
+		
+		res.render('wanttogo',{title:req.session.user.wanttogo});
+	} else {
+		res.redirect('/');
+	}
+});
 
 app.timeout = 60000;
 app.listen(3000);
