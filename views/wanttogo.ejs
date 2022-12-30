@@ -17,13 +17,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Search Results</title>
+    <title>Want-to-Go List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Want-to-Go List</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,17 +38,5 @@
             </form>
         </div>
     </nav>
-    <div class="list-group">
-        <% for (var i = 0; i < names.length; i++)  { %>
-        <button type="button" class="list-group-item list-group-item-action " onClick="javascript:window.location.href='<%= paths[i]%>'">
-          <%= names[i] %>
-        </button>
-        <% } %>
-    </div>
-    <% if (paths.length == 0) { %>
-        <div class="alert alert-danger" role="alert">
-            Destination not Found
-          </div>
-    <% } %>
 </body>
 </html>

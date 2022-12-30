@@ -13,17 +13,50 @@
             text-align: center;
             -webkit-text-stroke: 1px blue;
         }
+        .container1 {
+            position: fixed;
+            left: 50px;
+            top: 150px;
+            color: white;
+        }
+        .container2 {
+            position: fixed;
+            left: 300px;
+            top: 150px;
+            color: white;
+            width: 300px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .video {
+            position: fixed;
+            left: 700px;
+            top: 150px;
+            color: white;
+            width: 300px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .wanttogo {
+            position: fixed;
+            left: 30px;
+            top: 470px;
+        }
+        #my {
+            zoom: 110%;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Search Results</title>
+    <title>Paris</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Paris</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,17 +71,21 @@
             </form>
         </div>
     </nav>
-    <div class="list-group">
-        <% for (var i = 0; i < names.length; i++)  { %>
-        <button type="button" class="list-group-item list-group-item-action " onClick="javascript:window.location.href='<%= paths[i]%>'">
-          <%= names[i] %>
-        </button>
-        <% } %>
+    <div class="container1">
+        <img id="image" src="/paris.png" width="193" height="300">
     </div>
-    <% if (paths.length == 0) { %>
-        <div class="alert alert-danger" role="alert">
-            Destination not Found
-          </div>
-    <% } %>
+    <div class="container2">
+        It is known as the most romantic city in the world, and is home to some world famous sights that are constantly shown in travel magazines, movies, and other works of art. Paris, the capital of France, has a population of over two million people and is one of Europe's most-visited cities.
+    </div>
+    <div class="wanttogo">
+        <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+    </div>
+    <div class="video">
+        <video width="480" height="360" controls>
+            <source src="/paris.mp4">
+        </video>
+    </div>
+
 </body>
+
 </html>

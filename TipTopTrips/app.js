@@ -267,5 +267,28 @@ app.post('/santorini', (req, res) => {
                   
                     }); 
 
+app.post('/search', (req, res) => {
+	var destinations = ["Inca Trail to Machu Picchu","Annapurna Circuit","Paris","Rome","Bali Island","Santorini Island"];
+	var names = [];
+	var paths = [];
+	const path_map = new Map();
+	path_map.set('Inca Trail to Machu Picchu', '/inca');
+	path_map.set('Annapurna Circuit', '/annapurna');
+	path_map.set('Paris', '/paris');
+	path_map.set('Rome', '/rome');
+	path_map.set('Bali Island', '/bali');
+	path_map.set('Santorini Island', '/santorini');
+	for (var d in destinations) {
+		for (var i = 0; i < destinations[d].length - req.body.Search.length; i++) {
+			if (destinations[d].toLowerCase().substring(i, i + req.body.Search.length) == req.body.Search.toLowerCase()) {
+				names.push(destinations[d]);
+				paths.push(path_map.get(destinations[d]));
+				break;
+			}
+		}
+	}
+	res.render("searchresults", {names: names, paths: paths});
+});
+
 app.timeout = 60000;
 app.listen(3000);
