@@ -120,6 +120,18 @@ app.get('/want-to-go', function(req, res) {
 
 });
 
+//ability to navigate to search page
+app.get('/search', function(req, res) {
+	if (req.session.authenticated) {
+		// USE req.session.user FOR USER DATA
+		// INSERT YOUR CODE HERE
+		res.render('search');
+	} else {
+		res.redirect('/');
+	}
+  	
+});
+
 
 
 //ability to navigate to the Islands page
