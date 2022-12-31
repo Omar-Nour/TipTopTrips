@@ -110,15 +110,15 @@ app.post('/', function(req, res) {
 //Pages Routes
 
 //ability to navigate to the Want-To-Go-List page
-//app.get('/want-to-go', function(req, res) { 
-//	if (req.session.authenticated) {
-//		// USE req.session.user FOR USER DATA
-//		// INSERT YOUR CODE HERE
-//		res.render('wanttogo');
-//	} else {
-//		res.redirect('/');
-//	}
-//});
+app.get('/want-to-go', function(req, res) { 
+	if (req.session.authenticated) {
+		
+		res.render('wanttogo',{reports:req.session.user.wanttogo});
+	} else {
+		res.redirect('/');
+	}
+
+});
 
 
 
@@ -378,17 +378,8 @@ app.post('/santorini', (req, res) => {
 		});
 	}
 }); 
-app.get('/want-to-go', function(req, res) { 
-	if (req.session.authenticated) {
-		
-		res.render('wanttogo',{reports:req.session.user.wanttogo});
-	} else {
-		res.redirect('/');
-	}
 
-});
-
-
+//search logic
 app.post('/search', (req, res) => {
 	var destinations = ["Inca Trail to Machu Picchu","Annapurna Circuit","Paris","Rome","Bali Island","Santorini Island"];
 	var names = [];
