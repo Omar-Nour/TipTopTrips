@@ -38,5 +38,21 @@
             </form>
         </div>
     </nav>
+    <ul class="display">
+      
+      <% for (var i = 0; i < reports.length; i++) { %>
+      <li class="display list">
+          <div class="display city">
+              <span class="destination" style="color: rgb(191, 255, 161); text-align: left;" >
+              <%= reports[i] %>
+              
+              <button onclick="location.href = '/<%= reports[i] %>';" id="reports[i]" class="btn btn-secondary ml-3"> View </button>
+               </span>
+              
+          </div>
+      </li>     
+      <% } %>
+  </ul>
+    
 </body>
 </html>
