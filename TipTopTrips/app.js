@@ -233,6 +233,7 @@ app.post('/paris', (req, res) => {
 		if (err) throw err;
 		var dbo = client.db("TipTopTrips");
 		//add paris to wanttogo
+		req.session.user.wanttogo.push("paris");
 		dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "paris"}}, function(err, result) {
 			if (err) throw err;
 			console.log("Added paris to wanttogo list of "+req.session.user.username);
@@ -258,6 +259,7 @@ app.post('/bali', (req, res) => {
 			if (err) throw err;
 			var dbo = client.db("TipTopTrips");
 			//add bali to wanttogo
+			req.session.user.wanttogo.push("bali");
 			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "bali"}}, function(err, result) {
 				if (err) throw err;
 				console.log("Added bali to wanttogo list of "+req.session.user.username);
@@ -282,6 +284,7 @@ app.post('/inca', (req, res) => {
 			if (err) throw err;
 			var dbo = client.db("TipTopTrips");
 			//add inca to wanttogo
+			req.session.user.wanttogo.push("inca");
 			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "inca"}}, function(err, result) {
 				if (err) throw err;
 				console.log("Added inca to wanttogo list of "+req.session.user.username);
@@ -306,6 +309,7 @@ app.post('/annapurna', (req, res) => {
 			if (err) throw err;
 			var dbo = client.db("TipTopTrips");
 			//add annapurna to wanttogo
+			req.session.user.wanttogo.push("annapurna");
 			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "annapurna"}}, function(err, result) {
 				if (err) throw err;
 				console.log("Added annapurna to wanttogo list of "+req.session.user.username);
@@ -330,6 +334,7 @@ app.post('/rome', (req, res) => {
 			if (err) throw err;
 			var dbo = client.db("TipTopTrips");
 			//add rome to wanttogo
+			req.session.user.wanttogo.push("rome");
 			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "rome"}}, function(err, result) {
 				if (err) throw err;
 				console.log("Added rome to wanttogo list of "+req.session.user.username);
@@ -354,6 +359,7 @@ app.post('/santorini', (req, res) => {
 			if (err) throw err;
 			var dbo = client.db("TipTopTrips");
 			//add santorini to wanttogo
+			req.session.user.wanttogo.push("santorini");
 			dbo.collection("Accounts").updateOne({username: req.session.user.username}, {$push: {"wanttogo": "santorini"}}, function(err, result) {
 				if (err) throw err;
 				console.log("Added santorini to wanttogo list of "+req.session.user.username);
