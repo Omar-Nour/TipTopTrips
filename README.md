@@ -1,6 +1,5 @@
 # Welcome to TipTopTrips!
-#### A travel agency website built using NodeJs, Javascript and MongoDB in the backend!
-#### Try it here: https://tiptoptrips.onrender.com/
+#### A travel agency website built using NodeJs, Javascript and MongoDB in the backend! Try it here: https://tiptoptrips.onrender.com/
 ## I. Page Organization:
 ### 1. Login/Registration
 To use our website, every user must posess an account, they can either login using an existing one or create a new account at our registration page. All they need is a unique username and a password that will be stored very securely on our MongoDB Database.
