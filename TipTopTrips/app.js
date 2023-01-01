@@ -54,8 +54,7 @@ app.post('/registration', function(req, res) {
 			bcrypt.hash(passw, 10, function(err, hash) { // hash password
 				dbo.collection("Accounts").insertOne({username: usern, password: hash, wanttogo: []})
 			});
-			//res.redirect(201, '/');
-			//res.render('registration',{invalidloginerror: "", success:"user created"});
+			
 			alert("user created");
 			res.redirect('/');
 		}});
@@ -92,11 +91,7 @@ app.post('/', function(req, res) {
 				res.render('login', {invalidloginerror: "Invalid username or password"});
 				console.log("Invalid login");
 			} else {
-				//add wanttogo param to all entries in db
-				//dbo.collection("Accounts").updateMany({}, {$set:{"wanttogo": []}});
-
-				//remove param from all entries in db
-				//dbo.collection("Accounts").updateMany({}, {$unset:{"wanttogo": {}}});
+				
 				req.session.authenticated = true;
 				req.session.user = userObject;
 				res.redirect('/home');
@@ -124,8 +119,7 @@ app.get('/want-to-go', function(req, res) {
 //ability to navigate to the Islands page
 app.get('/islands', function(req, res) {
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('islands');
 	} else {
 		res.redirect('/');
@@ -136,8 +130,7 @@ app.get('/islands', function(req, res) {
 //ability to navigate to the Bali page
 app.get('/bali',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('bali');
 	} else {
 		res.redirect('/');
@@ -148,8 +141,7 @@ app.get('/bali',function(req,res){
 //ability to navigate to the Santorini page
 app.get('/santorini',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('santorini');
 	} else {
 		res.redirect('/');
@@ -160,8 +152,7 @@ app.get('/santorini',function(req,res){
 //ability to navigate to the Cities page
 app.get('/cities', function(req, res) {
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('cities');
 	} else {
 		res.redirect('/');
@@ -172,8 +163,7 @@ app.get('/cities', function(req, res) {
 //ability to navigate to the Paris page
 app.get('/paris',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('paris');
 	} else {
 		res.redirect('/');
@@ -184,8 +174,7 @@ app.get('/paris',function(req,res){
 //ability to navigate to the Rome page
 app.get('/rome',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('rome');
 	} else {
 		res.redirect('/');
@@ -196,8 +185,7 @@ app.get('/rome',function(req,res){
 //ability to navigate to the Hiking page
 app.get('/hiking', function(req, res) {
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('hiking');
 	} else {
 		res.redirect('/');
@@ -208,8 +196,7 @@ app.get('/hiking', function(req, res) {
 //ability to navigate to the Inca page
 app.get('/inca',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+		
 		res.render('inca');
 	} else {
 		res.redirect('/');
@@ -220,8 +207,7 @@ app.get('/inca',function(req,res){
 //ability to navigate to the Annapurna page
 app.get('/annapurna',function(req,res){
 	if (req.session.authenticated) {
-		// USE req.session.user FOR USER DATA
-		// INSERT YOUR CODE HERE
+
 		res.render('annapurna');
 	} else {
 		res.redirect('/');
