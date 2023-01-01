@@ -279,7 +279,7 @@ app.post('/search', (req, res) => {
 	path_map.set('Bali Island', '/bali');
 	path_map.set('Santorini Island', '/santorini');
 	for (var d in destinations) {
-		for (var i = 0; i < destinations[d].length - req.body.Search.length; i++) {
+		for (var i = 0; i <= destinations[d].length - req.body.Search.length; i++) {
 			if (destinations[d].toLowerCase().substring(i, i + req.body.Search.length) == req.body.Search.toLowerCase()) {
 				names.push(destinations[d]);
 				paths.push(path_map.get(destinations[d]));
