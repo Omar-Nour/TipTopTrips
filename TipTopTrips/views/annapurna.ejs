@@ -76,12 +76,24 @@
         Annapurna Circuit has been voted as the best long-distance trek in the world, as it combined a wide variety of climate zones from tropics at 600m above sea level to the arctic at 5416m above sea level at the Thorong La pass and cultural variety from Hindu villages at the low foothills to the Tibetan culture of Manang.
     </div>
     <div class="wanttogo">
-        <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        <form action="" method="post">
+            <button  id="wanttogo"  class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        </form>
+        <br>
+            <div>
+                <% if(locals.err_msg) { %>
+                    <div class="alert alert-danger" role="alert"><%= err_msg %></div>
+                    <% } %>
+                
+            </div>
     </div>
     <div class="video">
-        <video width="480" height="360" controls>
-            <source src="/annapurna.mp4">
-        </video>
+        <!-- The iframe HTML tag is what will allow us to embed the link of a video in the page so that 
+            the page visitors can stream it without us having to download it and increase the file size. -->
+        <iframe title="Annapurna Circuit Tour" width="560" height="315" src="https://www.youtube.com/embed/KHvOOuecnqA" frameborder="20" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
 </body>
 </html>

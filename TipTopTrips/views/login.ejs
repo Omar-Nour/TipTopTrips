@@ -29,7 +29,7 @@
 
 <body>
     <div class="container">
-        <h1>Welcome</h1>
+        <h1>Welcome to TipTopTrips!</h1>
     </div>
     <div class="cont">
         <form method="POST">
@@ -42,7 +42,12 @@
             <input type="submit" value="Login">
         </form>
         <br>
-        <a href="registration">I dont have an account</a>
+        <div>
+            <%if (invalidloginerror.length != 0) { %>
+                <div id='status' style="color: darkred;"><%= invalidloginerror %></div>
+            <% } %>
+            <a href="registration">I dont have an account</a>
+        </div>
     </div>
 </body>
 </html>

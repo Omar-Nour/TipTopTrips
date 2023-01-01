@@ -38,5 +38,17 @@
             </form>
         </div>
     </nav>
+    <div class="list-group">
+        <% for (var i = 0; i < names.length; i++)  { %>
+        <button type="button" class="list-group-item list-group-item-action " onClick="javascript:window.location.href='<%= paths[i]%>'">
+          <%= names[i] %>
+        </button>
+        <% } %>
+    </div>
+    <% if (paths.length == 0) { %>
+        <div class="alert alert-danger" role="alert">
+            Destination not Found
+          </div>
+    <% } %>
 </body>
 </html>
