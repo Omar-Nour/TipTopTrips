@@ -5,6 +5,7 @@ var path = require('path');
 const { request } = require('http');
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 let alert = require('alert'); 
+const PORT = process.env.PORT || 3000;
 
 
 var app = express();
@@ -395,4 +396,6 @@ app.post('/search', (req, res) => {
 });
 
 app.timeout = 60000;
-app.listen(3000);
+app.listen(PORT, () => {
+	console.log(`server started on port ${PORT}`);
+  });
