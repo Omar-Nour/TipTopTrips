@@ -57,7 +57,7 @@ app.post('/registration', function(req, res) {
 			});
 			
 			alert("user created");
-			res.redirect('/');
+			res.redirect(201, '/');
 		}});
 	})
 }});
